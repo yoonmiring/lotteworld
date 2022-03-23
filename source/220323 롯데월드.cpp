@@ -242,8 +242,8 @@ while(1){
 			time_t base = time(NULL);
 			t = localtime(&base);
 		
-		fprintf(fp,"날짜: %d-%d-%d,",t->tm_year + 1900,t->tm_mon +1,t->tm_mday);
-			fprintf(fp,"%d,%d,%d,%d,%d,%d\n",ticketTimeCaseArr[i],ageArr[i],ticketPriceArr[i],discountArr[i],orderCountArr[i],totalTicketPrice);
+		fprintf(fp,"%2d %2d %2d,",t->tm_year+1900 , t->tm_mon+1,t->tm_mday );
+			fprintf(fp,"%d,%d,%d,%d,%d,\n",ticketTimeCaseArr[i],ageArr[i],ticketPriceArr[i],discountArr[i],orderCountArr[i]);
 			switch (ticketTimeCaseArr[i]) {
 				case 1:
 					printf("%s\t%s","종합이용권","1Day");
@@ -297,13 +297,13 @@ while(1){
 					printf("%s\n","국가유공자 우대");
 					break;
 				case 4:
-					printf("%s\n","휴가장병 우대");
+					printf("%s\n","다둥이 행복 우대");
 					break;
 				case 5:
 					printf("%s\n","임산부 우대");
 					break;
 				case 6:
-					printf("%s\n","다둥이 행복카드 우대");
+					printf("%s\n","휴가장병 우대");
 					break;
 				default:
 					break;
