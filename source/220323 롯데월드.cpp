@@ -242,7 +242,7 @@ while(1){
 			time_t base = time(NULL);
 			t = localtime(&base);
 		
-		fprintf(fp,"%2d %2d %2d,",t->tm_year+1900 , t->tm_mon+1,t->tm_mday );
+			fprintf(fp,"%d %2d %2d,",t->tm_year+1900 , t->tm_mon+1,t->tm_mday);
 			fprintf(fp,"%d,%d,%d,%d,%d,\n",ticketTimeCaseArr[i],ageArr[i],ticketPriceArr[i],discountArr[i],orderCountArr[i]);
 			switch (ticketTimeCaseArr[i]) {
 				case 1:

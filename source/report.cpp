@@ -7,7 +7,7 @@ int main(){
 	int date_Y[MAX],date_M[MAX],date_D[MAX],ticketTimeCaseArr[MAX],ageArr[MAX],ticketPriceArr[MAX],discountArr[MAX],orderCountArr[MAX];
 	
 	
-	while(fscanf(fp, "%d %d %d ,%d,%d,%d,%d,%d",&date_Y[count],&date_M[count],&date_D[count],&ticketTimeCaseArr[count],&ageArr[count],&ticketPriceArr[count],&discountArr[count],&orderCountArr[count]) != -1){
+	while(fscanf(fp, "%d %2d %2d,%d,%d,%d,%d,%d",&date_Y[count],&date_M[count],&date_D[count],&ticketTimeCaseArr[count],&ageArr[count],&ticketPriceArr[count],&discountArr[count],&orderCountArr[count]) != -1){
 		count++;
 	}
 	fclose(fp);
