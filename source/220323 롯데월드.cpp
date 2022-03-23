@@ -11,11 +11,12 @@ int main(){
 	const int  PARK_DAY_ADULT_PRICE = 56000,PARK_DAY_TEEN_PRICE = 50000, PARK_DAY_CHILD_PRICE = 46000;//파크 1day가격 
 	const int  OLDMAN_AGE=65, TEEN_AGE_MAX=18, TEEN_KID_AGE=13, KID_BABY_AGE=3, BABY_AGE_MIN=1;//나이 최댓값 
 	int numberYear,birth,age,oldage,newage,birthMonth,birthDay; 
-	int ticketCase[20][5]={0};
 	int ticketTimeCaseArr[10]={0}, ageArr[10]={0}, ticketPriceArr[10]={0}, discountArr[10]={0}, orderCountArr[10]={0};
 //권종, 연령구분, 수량, 가격, 우대사항
 
-
+while(1){
+	int totalTicketPrice=0, counter=0;
+	int icketTimeCaseArr[10]={0}, ageArr[10]={0}, ticketPriceArr[10]={0}, discountArr[10]={0}, orderCountArr[10]={0};
 	do{//c변수 초기화
 	 	choose=0, ticket=0, discount=0, orderCount=0, FrontNumber=0, BackNumber=0;
 		do{
@@ -233,16 +234,16 @@ int main(){
 		// 영수증 출력
 		printf("\n\n===================================== %s =====================================\n","행복랜드") ;
 		printf("%s\t\t%s\t     %s\t  %s\t\t%s\n","선택사항","연  령","매수","가격","우대사항");
-		struct tm*t;
+
+		
+		
+		for (int i =0; i<counter; i++) {
+			struct tm*t;
 			time_t base = time(NULL);
 			t = localtime(&base);
 		
 		fprintf(fp,"날짜: %d-%d-%d,",t->tm_year + 1900,t->tm_mon +1,t->tm_mday);
-		
-		
-		for (int i =0; i<counter; i++) {
-			
-			fprintf(fp,"%d,%d,%d,%d,%d\n",ticketTimeCaseArr[i],ageArr[i],ticketPriceArr[i],discountArr[i],orderCountArr[i]);
+			fprintf(fp,"%d,%d,%d,%d,%d,%d\n",ticketTimeCaseArr[i],ageArr[i],ticketPriceArr[i],discountArr[i],orderCountArr[i],totalTicketPrice);
 			switch (ticketTimeCaseArr[i]) {
 				case 1:
 					printf("%s\t%s","종합이용권","1Day");
@@ -312,8 +313,13 @@ int main(){
 		printf("\n=====================================================================================\n") ;
 		printf("\n계속 진행(1:새로운 주문, 2:프로그램 종료) : ");
 		scanf("%d",&again);
-
 	 
+	 if(again ==1){
+	 	continue;
+	 }else if (again==2){
+	 	break;
+	 }
+}
 	 
 	return 0; 
 }
