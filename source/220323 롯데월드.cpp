@@ -32,7 +32,7 @@ while(1){
 		do{
 		printf("주민번호 앞자리 6자글자와 뒷자리 1자리를 입력하세요.\n 앞자리(6글자)\n");
 		scanf("%d",&FrontNumber);
-		}while(!(FrontNumber>000001 && FrontNumber<999999));
+		}while(!(FrontNumber>010001 && FrontNumber<999999));
 	
 		do{
 		printf("뒷자리(1글자)\n");
