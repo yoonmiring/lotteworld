@@ -55,11 +55,11 @@ int main(){
 	printf("\n\t\t\t파크 이용권(1DAy): 총 %d매\t / 매출 %d원\n",countParkDay,incomeParkDay);
 	printf("\n\t\t\t파크 이용권(AFTER4): 총 %d매\t / 매출 %d원\n",countParkAfter,incomeParkAfter);
 	
-	printf("\n==========================================우대사항별  판매 현황===============================================\n") ;
+	printf("\n=======================================우대사항별  판매 현황=============================================\n") ;
 	
 	
-	int countNo = 0, countDis = 0 ,countHonor = 0, countBaby = 0, countMore = 0, countArmy = 0;
-	int incomeNo = 0, incomeDis = 0 ,incomeHonor = 0, incomeBaby = 0, incomeMore = 0, incomeArmy = 0;
+	int countNo = 0, countDis = 0 ,countHonor = 0, countBabymom = 0, countMore = 0, countArmy = 0;
+	int incomeNo = 0, incomeDis = 0 ,incomeHonor = 0, incomeBabymom = 0, incomeMore = 0, incomeArmy = 0;
 	
 	for (int i=0; i< count; i++){
 		if ( discountArr[i] == 1) {
@@ -75,8 +75,8 @@ int main(){
 			incomeHonor += ticketPriceArr[i];	
 		}
 		else if ( discountArr[i] == 4) {
-			countBaby += orderCountArr[i];	
-			incomeBaby += ticketPriceArr[i];		 
+			countBabymom += orderCountArr[i];	
+			incomeBabymom += ticketPriceArr[i];		 
 		} 
 		else if ( discountArr[i] == 5) {
 			countMore += orderCountArr[i];
@@ -90,12 +90,45 @@ int main(){
 	printf("\n\t\t\t우대사항 없음 : 총 %d매\t\t / 매출 %d원\n",countNo,incomeNo);
 	printf("\n\t\t\t장애인 우대사항 : 총 %d매\t / 매출 %d원\n",countDis,incomeDis);
 	printf("\n\t\t\t국가유공자 우대사항: 총 %d매\t / 매출 %d원\n",countHonor,incomeHonor);
-	printf("\n\t\t\t임산부 우대사항: 총 %d매\t / 매출 %d원\n",countBaby,incomeBaby);
+	printf("\n\t\t\t임산부 우대사항: 총 %d매\t / 매출 %d원\n",countBabymom,incomeBabymom);
 	printf("\n\t\t\t다둥이 우대사항: 총 %d매\t / 매출 %d원\n",countMore,incomeMore);
 	printf("\n\t\t\t휴가장병  우대사항: 총 %d매\t / 매출 %d원\n",countArmy,incomeArmy);
 
 	
+	printf("\n=======================================연령별  판매 현황=============================================\n") ;
 	
+	
+	int countAdult = 0, countChild = 0 ,countKid = 0, countBaby = 0, countOld = 0;
+	int incomeAdult = 0, incomeChild = 0 ,incomeKid = 0, incomeBaby = 0, incomeOld = 0;
+	
+	for (int i=0; i< count; i++){
+		if ( ageArr[i] == 1) {
+			countAdult += orderCountArr[i];
+			incomeAdult += ticketPriceArr[i];		 
+		} 
+		else if ( ageArr[i] == 2) {
+			countChild += orderCountArr[i];	
+			incomeChild += ticketPriceArr[i];		 
+		} 
+		else if ( ageArr[i] == 3) {
+			countKid += orderCountArr[i];
+			incomeKid += ticketPriceArr[i];	
+		}
+		else if ( ageArr[i] == 4) {
+			countBaby += orderCountArr[i];	
+			incomeBaby += ticketPriceArr[i];		 
+		} 
+		else if ( ageArr[i] == 5) {
+			countOld += orderCountArr[i];
+			incomeOld += ticketPriceArr[i];			 
+		}
+
+	}
+	printf("\n\t\t\t어른 : 총 %d매\t\t / 매출 %d원\n",countAdult,incomeAdult);
+	printf("\n\t\t\t청소년 : 총 %d매\t / 매출 %d원\n",countChild,incomeChild);
+	printf("\n\t\t\t아동 : 총 %d매\t\t / 매출 %d원\n",countKid,countKid);
+	printf("\n\t\t\t유아 : 총 %d매\t\t / 매출 %d원\n",countBaby,incomeBaby);
+	printf("\n\t\t\t경로자 : 총 %d매\t / 매출 %d원\n",countOld,incomeOld);
 	
 
 return 0;
