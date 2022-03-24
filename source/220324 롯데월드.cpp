@@ -179,21 +179,7 @@ int choose,ticket,FrontNumber,BackNumber,orderCount,discount,prise,sum,final,nex
 				break;					
 		}
 	}
-
-
-int main(){
-	
-
-while(1){
-	int totalTicketPrice=0, counter=0;
-	int icketTimeCaseArr[10]={0}, ageArr[10]={0}, ticketPriceArr[10]={0}, discountArr[10]={0}, orderCountArr[10]={0};
-	do{//c변수 초기화
-	 	selectTicket();
-		personNumber();
-		countTicket();
-		discountMoney();
-		monthAge();
-	
+	void ageSelectCase(){ //나이, 권종별 케이스 정리 
 			//나이 케이스 정립
 			if ( age <KID_BABY_AGE && age >=BABY_AGE_MIN) { 
 				ageCase=4; // 베이비 
@@ -212,50 +198,66 @@ while(1){
 			if (choose==1 && ticket==1) {
 				ticketTimeCase = 1; //종합 + 1Day 
 			} else if (choose==1 && ticket==2) { 
-				ticketTimeCase =2; //종합 + 4시이후  
+				ticketTimeCase =2; //종합 + 4시이후   
 				ticketTimeCase = 3; //파크 + 1Day 
 			} else {
 				ticketTimeCase = 4; // 파크 + 4시후 
 			} 
-
-		chooseAgePrice();
-		discountCase();
-		//총 합 가격 
-		sum = final * orderCount;
+		
+	}
+	void receiptOutput(){	 //영수증 출력부 
+			
+}
 	
-		printf(" *****************************\n");
-		printf(" 가격은 %d원 입니다.\n 감사합니다.\n",sum);
-		printf(" *****************************\n");
+int main(){
+	while(1){
+	int totalTicketPrice=0, counter=0;
+	int ticketTimeCaseArr[10]={0}, ageArr[10]={0}, ticketPriceArr[10]={0}, discountArr[10]={0}, orderCountArr[10]={0};	
+		do{//c변수 초기화
+		 	selectTicket();
+			personNumber();
+			countTicket();
+			discountMoney();
+			monthAge();
+			ageSelectCase();
+			chooseAgePrice();
+			discountCase();
+			//총 합 가격 
+			sum = final * orderCount;
 		
-		ticketTimeCaseArr[counter] = ticketTimeCase;
-		ticketPriceArr[counter] = sum;
-		discountArr[counter] = discount;
-		orderCountArr[counter] = orderCount;
-		ageArr[counter]=ageCase;
-		totalTicketPrice += sum;
+			printf(" *****************************\n");
+			printf(" 가격은 %d원 입니다.\n 감사합니다.\n",sum);
+			printf(" *****************************\n");
+			
+			ticketTimeCaseArr[counter] = ticketTimeCase;
+			ticketPriceArr[counter] = sum;
+			discountArr[counter] = discount;
+			orderCountArr[counter] = orderCount;
+			ageArr[counter]=ageCase;
+			totalTicketPrice += sum;
+			
+			//counter에 1 추가 , 초기값은 0 
+			counter++;
+			
+			printf("계속 발권 하시겠습니까?\n 1. 티켓 발권 \n 2. 종료\n");
+			scanf("%d",&next);
+		}while (next ==1);
 		
-		//counter에 1 추가 , 초기값은 0 
-		counter++;
+			printf("\n이용해주셔서 감사합니다.\n");
 		
-		printf("계속 발권 하시겠습니까?\n 1. 티켓 발권 \n 2. 종료\n");
-		scanf("%d",&next);
-	}while (next ==1);
-	
-		printf("\n이용해주셔서 감사합니다.\n");
-		FILE *fp = fopen("report.csv","a");
 		// 영수증 출력
 		printf("\n\n===================================== 롯데월드  =====================================\n") ;
 		printf("%s\t\t%s\t     %s\t  %s\t\t%s\n","선택사항","연  령","매수","가격","우대사항");
 
 		
-		
+		FILE *fp = fopen("report.csv","a");
 		for (int i =0; i<counter; i++) {
 			struct tm*t;
 			time_t base = time(NULL);
 			t = localtime(&base);
-		int todayDate = (t->tm_year + 1900)*10000 +(t->tm_mon + 1)*100+(t->tm_mday);
-		
+			int todayDate = (t->tm_year + 1900)*10000 +(t->tm_mon + 1)*100+(t->tm_mday);
 			fprintf(fp,"%d, %d,%d,%d,%d,%d,\n",todayDate,ticketTimeCaseArr[i],ageArr[i],ticketPriceArr[i],discountArr[i],orderCountArr[i]);
+			
 			switch (ticketTimeCaseArr[i]) {
 				case 1:
 					printf("%s\t%s","종합이용권","1Day");
@@ -273,7 +275,7 @@ while(1){
 					break;
 			}
 			
-		switch (ageArr[i]) {
+			switch (ageArr[i]) {
 				case 1:
 					printf("\t%s","어  른");
 					break;
@@ -321,17 +323,20 @@ while(1){
 					break;
 			}
 		}
-		printf("\n입장료 총액은 %d원 입니다.", totalTicketPrice);
-		printf("\n=====================================================================================\n") ;
-		printf("\n계속 진행(1:새로운 주문, 2:프로그램 종료) : ");
-		scanf("%d",&again);
-	 
-	 if(again ==1){
-	 	continue;
-	 }else if (again==2){
-	 	break;
-	 }
-}
-	 
-	return 0; 
-}
+	
+			
+			
+			printf("\n입장료 총액은 %d원 입니다.", totalTicketPrice);
+			printf("\n=====================================================================================\n") ;
+			printf("\n계속 진행(1:새로운 주문, 2:프로그램 종료) : ");
+			scanf("%d",&again);
+		 
+		 if(again ==1){
+		 	continue;
+		 }else if (again==2){
+		 	break;
+		 }
+	}
+		 
+		return 0; 
+	}
