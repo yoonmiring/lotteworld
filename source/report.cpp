@@ -29,6 +29,33 @@ int main(){
 	for(int i=0; i<count; i++){
 	printf("%10d\t%10d\t%10d\t%10d\t%10d\t%10d\n",date[i],ticketTimeCaseArr[i],ageArr[i],ticketPriceArr[i],discountArr[i],orderCountArr[i]);
 	}
+	
+	printf("==========================================권종별 판매 현황===============================================\n") ;
+	
+	
+	int countAllDay = 0 , countAllAfter=0, countParkDay=0, countParkAfter = 0, incomeAllDay = 0,incomeAllAfter = 0, incomeParkDay = 0, incomeParkAfter = 0;
+	
+	for (int i=0; i< count; i++){
+		if ( ticketTimeCaseArr[i] == 1) {
+			countAllDay += orderCountArr[i];
+			incomeAllDay += ticketPriceArr[i];
+		} else if ( ticketTimeCaseArr[i] == 2){
+			countAllAfter += orderCountArr[i];
+			incomeAllAfter += ticketPriceArr[i];
+		}else if ( ticketTimeCaseArr[i] == 3){
+			countParkDay += orderCountArr[i];
+			incomeParkDay += ticketPriceArr[i];
+		}else if ( ticketTimeCaseArr[i] == 4){
+			countParkAfter += orderCountArr[i];
+			incomeParkAfter += ticketPriceArr[i];
+		}
+	}
+	printf("\n\t\t\t종합 이용권(1DAy): 총 %d매\t / 매출 %d원\n",countAllDay,incomeAllDay);
+	printf("\n\t\t\t종합 이용권(AFTER4): 총 %d매\t / 매출 %d원\n",countAllAfter,incomeAllAfter);
+	printf("\n\t\t\t파크 이용권(1DAy): 총 %d매\t / 매출 %d원\n",countParkDay,incomeParkDay);
+	printf("\n\t\t\t파크 이용권(AFTER4): 총 %d매\t / 매출 %d원\n",countParkAfter,incomeParkAfter);
+	
+	
 
 return 0;
 }
