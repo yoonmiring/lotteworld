@@ -130,6 +130,24 @@ int main(){
 	printf("\n\t\t\t유아 : 총 %d매\t\t / 매출 %d원\n",countBaby,incomeBaby);
 	printf("\n\t\t\t경로자 : 총 %d매\t / 매출 %d원\n",countOld,incomeOld);
 	
+	
+	printf("\n=======================================일자별  판매 현황=============================================\n") ;
+	
+	
+int dateIncome[5000]= {0,};
+	
+	for (int dateIndex = 101; dateIndex <= 1231; dateIndex++){
+		for (int i = 0; i <= 5000 ; i++){
+			if (dateIndex == date[i]%10000){
+			dateIncome[dateIndex] += ticketPriceArr[i];
+			}
+		}	
+	}
+	
+	for (int i= 1; i<=2000; i++ ){
+		if (dateIncome[i] >0)
+		printf("\t\t\t\t\t%5d 월%5.2d 일:%10d 원\n",i/100,i%100,dateIncome[i]);
+	}
 
 return 0;
 }
